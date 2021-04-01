@@ -92,14 +92,10 @@ def post_api_1h(request):
             'titolo':post.titolo,
             'data_creazione':post.data_creazione,
             'data_pubb':post.data_pubblicazione,
-            # 'hash_testo':post.hash,
-            # 'hash_transazione':post.txId,
-            # 'testo':post.testo,
+             'hash_testo':post.hash,
+             'hash_transazione':post.txId,
+             'testo':post.testo,
         })
     return JsonResponse({'post_last_1h':posts_1h},safe=False)
 
-def admin_count_post(request):
-    posts = Post.objects.all()
-    ip=get_ip(request)
-    return render(request,'posts/conta_post.html',{'ip':ip})
 
