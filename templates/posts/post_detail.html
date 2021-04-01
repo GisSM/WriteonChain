@@ -1,0 +1,13 @@
+{% extends 'homepage/base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+   <div class="post">
+       <a class="btn btn-success" href="{% url 'post_edit' id=post.id slug=post.slug %}">Modifica</a>
+       <h2><a href="{{post.get_absolute_url}}">{{ post.titolo }}</a></h2>
+        <p>{{ post.data_pubblicazione }}</p>
+        <p>Utente : {{post.utente}}</p>
+        <p>ID transazione testnet Ropsten : {{post.txId}}</p>
+        <p>{{ post.testo|linebreaksbr }}</p>
+    </div>
+{% endif %}
+{% endblock %}

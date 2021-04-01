@@ -1,0 +1,13 @@
+{% extends 'homepage/base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+{% if user.is_superuser %}
+<p><h2>Conta Post</h2></p>
+<p>Conta quanti post sono stati pubblicati per ogni utente</p>
+{{ ip }}
+{% for post in posts %}
+{% endfor %}
+{% endif %}
+{% endif %}
+{% endblock %}

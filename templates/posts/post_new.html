@@ -1,0 +1,22 @@
+{% extends 'homepage/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  <h2>Crea nuovo post</h2>
+  <p>Ricorda ogni post che pubblichi verrà salvato in maniera permanente sulla blockchain Ethereum (Ropsten Testnet)</p>
+{% if errore %}
+  <div class="alert alert-warning" role="alert">
+  {{ errore }}
+   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endif %}
+     <form method="POST" class="form-group">
+         {% csrf_token %}
+         {{ form|crispy }}
+         <h1><button type="submit" class="btn btn-success">Pubblica</button></h1>
+     </form>
+{% endif %}
+{% endblock %}

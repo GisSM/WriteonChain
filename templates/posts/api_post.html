@@ -1,0 +1,12 @@
+{% extends 'homepage/base.html' %}
+
+{% block content %}
+<div class="about_site">
+{% if user.is_authenticated %}
+    <p class="font-weight-bold"><h3>Servizi API</h3></p>
+    <p>Sezione dedicata alle API<br>
+        post_api_all/ permette di ottenere la lista completa di tutti<br>
+        post_api_1h/ permette di ottenere la lista dei post pubblicati nell'ultima ora</p>
+</div>
+{% endif %}
+{% endblock %}

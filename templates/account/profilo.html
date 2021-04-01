@@ -1,0 +1,16 @@
+{% extends 'homepage/base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<p><h2>{{user}}</h2></p>
+{% for post in posts %}
+   <div class="post">
+       <h3><a href="{{post.get_absolute_url}}">{{ post.titolo }}</a></h3>
+        <p>{{ post.data_pubblicazione }}</p>
+        <p><button type="button" class="btn btn-primary btn-sm" data-toggle="popover" data-placement="top" data-content={{post.txId}}>ID Ropsten</button></p>
+        <b><p>Hash del testo : {{post.hash}}</p></b>
+        <p>{{ post.testo|linebreaksbr|truncatewords_html:100  }}</p>
+    </div>
+{% endfor %}
+{% endif %}
+{% endblock %}

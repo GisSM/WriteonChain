@@ -1,0 +1,37 @@
+{% extends 'homepage/base.html' %}
+
+{% block content %}
+<div class="about_site">
+{% if user.is_authenticated %}
+<p class="font-weight-bold"><h3>Servizi utilizzati</h3>
+<h5>Wallet Eth: {{ balance }}wei<br>
+Address invio: 0x3a32D02cD13eA415Bc22D8E7656fCE90ABC5A382<br>
+Address ricevente: 0x0000000000000000000000000000000000000000<br></h5></p>
+<p class="font-weight-bold"><h5>Per il collegamento con con la testnet e utilizzo di web3 <a href="https://infura.io/">infura.io</a><br>
+    Rifornimento Wallet tramite <a href="https://faucet.ropsten.be/">faucet.ropsten.be</a></h5></p>
+<p class="font-weight-bold"><h5>Controllo transazione <a href="https://ropsten.etherscan.io/">ropsten.etherscan.io</a></h5>
+Per la realizzazione del progetto non viene usata la Mainnet di Ethereum ma la Testnet Ropsten che permette tramite faucet di avere "Ether gratis"
+per creare progetti di prova senza dover pagare il costo reale delle fees sulla mainnet. Si può comunque controllare il corretto risultato dell'invio (pubblicazione) del post tramite
+<a href="https://ropsten.etherscan.io/">ropsten.etherscan.io</a> inserendo l'ID della transazione nella barra di ricerca.</p>
+<p>L'intero sito è stato creato utilizzando Django<br>Lo scopo è quello di permettere a chiunque di scrivere qualcosa e pubblicarla
+su una blockchain. Dal momento in cui si salva qualcosa su blockchain, questo rimarrà per sempre salvato e si potrà attestare che almeno a partire
+da quella data, quel post esisteva.<br>
+Un modo semplice per avvicinare a questa tecnologia rivoluzionaria anche se le applicazioni potrebbero essere molteplici.<br>
+Dal momento in cui si pubblica, in automatico il post viene convertito in codice hash e parte una transazione dall'indirizzo (address invio)
+    verso l'altro, in questo caso (address ricevente). I due indirizzi potrebbero essere chiunque, tu che ora leggi e vuoi scrivere qualcosa che rimanga nel tempo
+    oppure la pubblicazione di una notizia da parte di un gironale. La conversione in codice hash fa si che il testo salvato
+sulla blockchain sia impossibile da leggere o decifrare, o almeno per risalire al testo originale ci vorrebbero anni di calcoli processati.</p>
+    {% else %}
+<p>L'intero sito è stato creato utilizzando Django<br>Lo scopo è quello di permettere a chiunque di scrivere qualcosa e pubblicarla
+su una blockchain. Dal momento in cui si salva qualcosa su blockchain, questo rimarrà per sempre salvato e si potrà attestare che almeno a partire
+da quella data, quel post esisteva.<br>
+Un modo semplice per avvicinare a questa tecnologia rivoluzionaria anche se le applicazioni potrebbero essere molteplici.<br>
+Dal momento in cui si pubblica, in automatico il post viene convertito in codice hash e parte una transazione dall'indirizzo (address invio)
+    verso l'altro, in questo caso (address ricevente). I due indirizzi potrebbero essere chiunque, tu che ora leggi e vuoi scrivere qualcosa che rimanga nel tempo
+    oppure la pubblicazione di una notizia da parte di un gironale. La conversione in codice hash fa si che il testo salvato
+sulla blockchain sia impossibile da leggere o decifrare, o almeno per risalire al testo originale ci vorrebbero anni di calcoli processati.</p>
+Hai bisogno di <a href="/login">accedere</a> per visualizzare ulteriori informazioni<br>
+Se non sei registrato <a href="/register">Clicca qui!</a>
+{% endif %}
+</div>
+{% endblock %}
