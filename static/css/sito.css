@@ -1,0 +1,20 @@
+body {background-color: #181818;}
+
+h1, h2, h3{color:#FB8122;}
+
+.about_site{color:white}
+
+.container-fluid{color:white;}
+
+footer{
+   background-color:black;
+   text-align:center;
+   margin-top:100px;
+   padding:50px;
+}
+
+p {color:white;}
+
+.mt-2{color:#FB8122;}
+
+.post {margin-bottom: 70px;}
