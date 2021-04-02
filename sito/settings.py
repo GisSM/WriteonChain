@@ -109,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'it'
 
-TIME_ZONE = 'europe/rome'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
