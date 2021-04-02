@@ -11,6 +11,4 @@ urlpatterns = [
        path('api_post/',views.api_post,name='api_post'),
        path('post_api_all/',views.post_api_all, name='post_api_all'),
        path('post_api_1h/',views.post_api_1h, name='post_api_1h'),
-       path('admin_conta_post',views.admin_count_post, name='admin_conta_post'),
-
 ]
