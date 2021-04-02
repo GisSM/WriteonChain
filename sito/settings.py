@@ -123,8 +123,9 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT =  'BASE_DIR/static'
-STATICFILES_DIRS= [BASE_DIR / 'static']
+if not DEBUG:
+    STATIC_ROOT = ''
+STATICFILES_DIRS = [BASE_DIR, 'static/']
 CRISPY_TEMPLATE_PACK='bootstrap4'
 LOGIN_REDIRECT_URL = '/'
 
