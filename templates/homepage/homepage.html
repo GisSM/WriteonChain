@@ -2,10 +2,10 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<p><h3>Ultimi post</h3></p>
+<p><h2>Ultimi post</h2></p>
 {% for post in posts %}
     <div class="post">
-        <h2><a href="{{post.get_absolute_url}}">{{ post.titolo }}</a></h2>
+        <h3><a href="{{post.get_absolute_url}}">{{ post.titolo }}</a></h3>
         <div class="data"><p>{{ post.data_pubblicazione }}</p></div>
         <p>Utente : {{post.utente}}</p>
         <p><button type="button" class="btn btn-primary btn-sm" data-toggle="popover" data-placement="top" data-content={{post.txId}}>ID Ropsten</button></p>

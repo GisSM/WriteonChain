@@ -4,7 +4,6 @@ from .forms import PostForm
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from datetime import datetime, timedelta
-from .utils import get_ip
 
 def post_all(request):
     posts=Post.objects.filter().order_by('-data_creazione')
