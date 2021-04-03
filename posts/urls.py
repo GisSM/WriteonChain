@@ -6,9 +6,11 @@ urlpatterns = [
        path('post_all',views.post_all,name='post/all'),
        path('<int:id>/<slug:slug>/',views.post_detail, name='post_detail'),
        path('<int:id>/<slug:slug>/edit',views.post_edit, name='post_edit'),
+       path('<int:id>/<slug:slug>/delete',views.post_delete,name='post_delete'),
        path('post_new/',views.post_new,name='post_new'),
        path('<user>/<id>',views.post_profilo, name='post_profilo'),
        path('api_post/',views.api_post,name='api_post'),
        path('post_api_all/',views.post_api_all, name='post_api_all'),
        path('post_api_1h/',views.post_api_1h, name='post_api_1h'),
+       path('admin_conta_post',views.post_number,name='post_number'),
 ]

@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post
 from .forms import PostForm
-from django.http import JsonResponse
+from django.http import JsonResponse,HttpResponseRedirect
 from django.contrib.auth.models import User
 from datetime import datetime, timedelta
+from django.db.models import Count
 
 def post_all(request):
     posts=Post.objects.filter().order_by('-data_creazione')
@@ -23,6 +24,11 @@ def post_lastfive(request):
 def post_detail(request, id, slug):
     post = get_object_or_404(Post,id=id,slug=slug)
     return render(request,'posts/post_detail.html',{'post':post})
+
+def post_delete(request,id,slug):
+    post=Post.objects.get(id=id,slug=slug)
+    post.delete()
+    return redirect('homepage')
 
 def post_new(request):
     if request.method == 'POST':
@@ -61,6 +67,10 @@ def post_profilo(request,user,id):
     user=get_object_or_404(User,username=user,id=id)
     posts=Post.objects.filter(utente=user)
     return render(request,'account/profilo.html',{'posts':posts})
+
+def post_number(request):
+    user_posts = User.objects.annotate(total_posts=Count('post'))
+    return render(request,'account/admin_conta_post.html',{'user_posts':user_posts})
 
 def api_post(request):
     return render(request,'posts/api_post.html')

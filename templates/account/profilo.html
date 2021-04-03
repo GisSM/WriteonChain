@@ -6,12 +6,32 @@
 {% for post in posts %}
    <div class="post">
        <h3><a href="{{post.get_absolute_url}}">{{ post.titolo }}</a></h3>
-       <a href="{% url 'post_edit' id=post.id slug=post.slug %}">Modifica</a>
+       <a href="{% url 'post_edit' id=post.id slug=post.slug %}">Modifica</a> <a href="#" data-toggle="modal" data-target="#delmodal">Elimina</a>
         <p>{{ post.data_pubblicazione }}</p>
         <p><button type="button" class="badge badge-pill badge-info" data-toggle="popover"  data-placement="top" data-content={{post.txId}}>ID Ropsten</button>
         <button type="button" class="badge badge-pill badge-info" data-toggle="popover" data-placement="top" data-content={{post.hash}}>Hash testo</button></p>
         <p>{{ post.testo|linebreaksbr|truncatewords_html:100  }}</p>
     </div>
+<div class="modal fade" id="delmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div style="background-color:black" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Elimina post</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <p>Il post verrà solo eliminato dal sito non dalla testnet. Sarà comunque visibile tramite questo id</p>
+       <p>ID testnet Ropsten: {{post.txId}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
+        <a type="button" class="btn btn-primary" href="{% url 'post_delete' id=post.id slug=post.slug %}" >Elimina</a>
+      </div>
+    </div>
+  </div>
+</div>
 {% endfor %}
 {% endif %}
 {% endblock %}

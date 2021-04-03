@@ -1,0 +1,12 @@
+{% extends 'homepage/base.html' %}
+
+{% block content %}
+{% if user.is_superuser %}
+<h3>Sezione solo admin</h3>
+<p>Controllo numero di post pubblicati per ogni utente</p>
+{% for post in user_posts %}
+<p>Utente: {{post.username}}
+   Post pubblicati: {{post.total_posts}}</p>
+{% endfor %}
+{% endif %}
+{% endblock %}
